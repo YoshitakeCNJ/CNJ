@@ -1,0 +1,100 @@
+# lancamento de 3 dados até atingir uma sequencia; n de vezes necessarias
+library(tidyverse)
+library(dplyr)
+
+i <- 0
+
+repeat {
+    
+    x <- 1:6
+    
+    x1 <- sample(x, 1)
+    x2 <- sample(x, 1)
+    x3 <- sample(x, 1)
+    
+    n <- c(x1,x2,x3)
+    n <- sort(n)
+    
+    d1 <- n[3] - n[2]
+    d2 <- n[2] - n[1]
+    
+    cond <- (d2 == 1) & (d1 == 1)
+    
+    if (any(cond)) break
+    
+    i <- i + 1
+}
+
+# calculando em media; media do n de vezes necessario
+
+total_simulacoes <- 100
+
+i <- 0
+t <- 0
+
+for (simulacao in 1:total_simulacoes) {
+    
+    i <- 0
+    
+    repeat {
+        
+        x <- 1:6
+        
+        x1 <- sample(x, 1)
+        x2 <- sample(x, 1)
+        x3 <- sample(x, 1)
+        
+        n <- c(x1,x2,x3)
+        n <- sort(n)
+        
+        d1 <- n[3] - n[2]
+        d2 <- n[2] - n[1]
+        
+        cond <- (d2 == 1) & (d1 == 1)
+        
+        if (any(cond)) break
+        
+        i <- i + 1
+        
+    }
+    
+    t <- t + i
+    
+}
+
+# calculando em media; media do n de bezes necessario
+
+total_simulacoes <- 1000000
+
+t <- 0
+
+for (simulacao in 1:total_simulacoes) {
+    
+    i <- 0
+    
+    repeat {
+        
+        x <- 1:6
+        
+        x1 <- sample(x, 1)
+        x2 <- sample(x, 1)
+        x3 <- sample(x, 1)
+        
+        n <- c(x1,x2,x3)
+        n <- sort(n)
+        
+        d1 <- n[3] - n[2]
+        d2 <- n[2] - n[1]
+        
+        cond <- (d2 == 1) & (d1 == 1)
+        
+        if (any(cond)) break
+        
+        i <- i + 1
+    }
+    
+    t <- t + i
+    
+}
+
+Media <- t/total_simulacoes
